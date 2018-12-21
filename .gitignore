@@ -10,3 +10,4 @@
 
 src/api/vendor/*
 !.keep
+gin-bin

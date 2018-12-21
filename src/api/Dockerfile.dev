@@ -4,11 +4,9 @@ COPY . /go/src/api/
 
 WORKDIR /go/src/api/
 
-# Install Dep and Gin
 RUN apk update \
   && apk add --no-cache git \
   && go get -u github.com/codegangsta/gin \
-  && go get -u github.com/golang/dep/cmd/dep \
-  && dep ensure
+  && go get -u github.com/golang/dep/cmd/dep
 
-CMD gin -i run
+# CMD dep ensure && gin -i run

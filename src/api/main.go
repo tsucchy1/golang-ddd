@@ -8,7 +8,7 @@ func main() {
         c.JSON(200, gin.H{
             "message": "ping",
         })
-    })
-    // ポートを設定しています。
+		})
+
     r.Run(":8000")
 }
