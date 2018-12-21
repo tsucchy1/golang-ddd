@@ -1,0 +1,9 @@
+.env
+.env.dev
+
+/.idea
+
+.DS_Store
+.docker-sync/
+
+*~
