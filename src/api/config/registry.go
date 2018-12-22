@@ -1,11 +1,10 @@
-
 package config
 
 import (
-	"api/interfaces/handler"
 	"api/application/usecase"
 	"api/domain/repository"
 	"api/infrastructure/persistence"
+	"api/interfaces/handler"
 )
 
 type Registry interface {
@@ -14,7 +13,7 @@ type Registry interface {
 	NewAppHandler() handler.AppHandler
 }
 
-type registry struct {}
+type registry struct{}
 
 func NewRegistry() Registry {
 	return &registry{}

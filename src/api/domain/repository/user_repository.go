@@ -1,4 +1,3 @@
-
 package repository
 
 import (
@@ -6,5 +5,5 @@ import (
 )
 
 type UserRepository interface {
-    FindOne(name string) (*model.User, error)
+	FindOne(name string) (*model.User, error)
 }

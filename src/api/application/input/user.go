@@ -1,4 +1,3 @@
-
 package input
 
 type GetUser struct {

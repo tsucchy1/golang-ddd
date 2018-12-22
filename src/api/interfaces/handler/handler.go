@@ -1,8 +1,7 @@
-
 package handler
 
 type AppHandler interface {
-	GetUserHandler	
+	GetUserHandler
 }
 
 type appHandler struct {
@@ -15,4 +14,4 @@ func NewAppHandler(
 	return &appHandler{
 		h1,
 	}
-} 
+}

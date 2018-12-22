@@ -1,10 +1,9 @@
-
 package err
 
 type RecordNotFound struct {
-	Op string
+	Op    string
 	Model string
-	Err error
+	Err   error
 }
 
 func (e *RecordNotFound) Error() string {

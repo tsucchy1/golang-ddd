@@ -1,11 +1,10 @@
-
 package handler
 
 import (
-	"net/http"
-	"github.com/gin-gonic/gin"
-	"api/application/usecase"
 	"api/application/input"
+	"api/application/usecase"
+	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 type GetUserHandler interface {
@@ -24,6 +23,7 @@ func (h *getUserHandler) GetUser(c *gin.Context) {
 	name := c.Param("name")
 	input := input.GetUser{name}
 	output, err := h.u.GetUser(input)
+
 	if err != nil {
 		c.String(http.StatusBadRequest, err.Error())
 		return
@@ -33,7 +33,6 @@ func (h *getUserHandler) GetUser(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-
 
 	c.JSON(200, gin.H{"status": "Success"})
 }

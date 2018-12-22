@@ -1,4 +1,3 @@
-
 package persistence
 
 import (
@@ -7,7 +6,7 @@ import (
 	"api/library/err"
 )
 
-type userRepository struct {}
+type userRepository struct{}
 
 func NewUserRepository() repository.UserRepository {
 	return &userRepository{}
@@ -16,10 +15,10 @@ func NewUserRepository() repository.UserRepository {
 func (r *userRepository) FindOne(name string) (*model.User, error) {
 
 	users := []map[string]string{
-		{ "name": "apple" },
-		{ "name": "google" },
-		{ "name": "tesla" },
-		{ "name": "toyota" },
+		{"name": "apple"},
+		{"name": "google"},
+		{"name": "tesla"},
+		{"name": "toyota"},
 	}
 
 	for _, u := range users {
