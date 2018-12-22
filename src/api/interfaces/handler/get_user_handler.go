@@ -29,10 +29,5 @@ func (h *getUserHandler) GetUser(c *gin.Context) {
 		return
 	}
 
-	if err := c.ShouldBindJSON(output); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-
-	c.JSON(200, gin.H{"status": "Success"})
+	c.JSON(200, output)
 }
