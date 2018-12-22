@@ -3,12 +3,11 @@ package interfaces
 
 import (
 	"github.com/gin-gonic/gin"
-	"config/registry"
+	"api/interfaces/handler"
 )
 
-func AppRouter() {
+func AppRouter(handler handler.AppHandler) *gin.Engine {
 	r := gin.Default()
-	handler := registry.NewAppHandler()
 
 	r.GET("/users/:name", handler.GetUser)
 	

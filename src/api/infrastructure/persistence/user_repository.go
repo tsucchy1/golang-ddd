@@ -2,14 +2,15 @@
 package persistence
 
 import (
-	"domain/repository"
-	"library/err"
+	"api/domain/model"
+	"api/domain/repository"
+	"api/library/err"
 )
 
 type userRepository struct {}
 
-func NewUserRepository() *repository.UserRepository {
-	return &UserRepository{}
+func NewUserRepository() repository.UserRepository {
+	return &userRepository{}
 }
 
 func (r *userRepository) FindOne(name string) (*model.User, error) {
@@ -21,7 +22,7 @@ func (r *userRepository) FindOne(name string) (*model.User, error) {
 		{ "name": "toyota" },
 	}
 
-	for u := range users {
+	for _, u := range users {
 		if u["name"] == name {
 			return &model.User{name}, nil
 		}

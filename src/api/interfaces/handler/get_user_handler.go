@@ -2,10 +2,10 @@
 package handler
 
 import (
+	"net/http"
 	"github.com/gin-gonic/gin"
-	"applicaton/usecase"
-	"application/input"
-	"config"
+	"api/application/usecase"
+	"api/application/input"
 )
 
 type GetUserHandler interface {
@@ -22,7 +22,18 @@ func NewGetUserHandler(u usecase.UserUseCase) GetUserHandler {
 
 func (h *getUserHandler) GetUser(c *gin.Context) {
 	name := c.Param("name")
-	input := &input.GetUser{name}
-	output := h.u.GetUser(input)
-	c.JSON(output)
+	input := input.GetUser{name}
+	output, err := h.u.GetUser(input)
+	if err != nil {
+		c.String(http.StatusBadRequest, err.Error())
+		return
+	}
+
+	if err := c.ShouldBindJSON(output); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+
+	c.JSON(200, gin.H{"status": "Success"})
 }

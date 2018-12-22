@@ -2,8 +2,7 @@
 package repository
 
 import (
-	"context"
-	"domain/model"
+	"api/domain/model"
 )
 
 type UserRepository interface {

@@ -1,9 +1,7 @@
 
 package output
 
-import "domain/model"
-
-type User type {
-	name string `json:"name"`
+type User struct {
+	Name string `json:"name"`
 }
 

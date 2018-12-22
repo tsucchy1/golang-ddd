@@ -2,13 +2,13 @@
 package usecase
 
 import (
-	"application/input"
-	"application/output"
-	"domain/repository"
+	"api/application/input"
+	"api/application/output"
+	"api/domain/repository"
 )
 
 type UserUseCase interface {
-	GetUser(name string) (*model.User, error)
+	GetUser(input.GetUser) (*output.User, error)
 }
 
 type userUseCase struct {
@@ -19,11 +19,11 @@ func NewUserUseCase(r repository.UserRepository) UserUseCase {
 	return &userUseCase{r}
 }
 
-func (u *userUseCase) GetUser(i input.GetUser) (output.User, error) {
+func (u *userUseCase) GetUser(i input.GetUser) (*output.User, error) {
 	user, err := u.FindOne(i.Name)
 	if err != nil {
 		return nil, err
 	}
 
-	return output.User{user.Name}, nil
+	return &output.User{user.Name}, nil
 }

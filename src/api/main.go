@@ -3,14 +3,16 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"interfaces"
+	"api/interfaces"
+	"api/config"
 )
 
 func main() {
-		router := interfaces.AppRouter()
+		registry := config.NewRegistry()
+		router := interfaces.AppRouter(registry.NewAppHandler())
 
 		router.GET("/ping", func(c *gin.Context){
-			c.String("test")
+			c.String(200, "test")
 		})
 
     router.Run(":8000")
